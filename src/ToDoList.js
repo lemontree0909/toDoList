@@ -1,4 +1,7 @@
 import { Component } from "react";
+import check from './verified.png';
+import trash from './bin.png';
+
 
 export class ToDoList extends Component{
     constructor(){
@@ -24,8 +27,17 @@ addItem(input){
     }
 }
 
+crossedWord(e){
+    const li = e.target;
+    li.classList.toggle ('crossed');
+}
+
+done(){
+    this.setState()
+}
+
 onFormSubmit = (event) =>{
-    event.preventDefalt();
+    event.preventDefault();
     console.log("submitted!");
 }
 
@@ -33,21 +45,26 @@ render(){
     return(
         <div>
             <form onSubmit = {this.onFormSubmit}>
-
                 <div className="container">
+                <div>
                     <input type="text"
-                    placeholder="What are your plans for this year?"
+                    className="inputField"
+                    placeholder="What are your plans for this year? Type here..."
                     onChange={(e) => {this.onChangeEvent(e.target.value)}}
                     value={this.state.userInput}/>
                 </div>
 
                 <div>
-                    <button onClick={() => this.addItem(this.state.userInput)}>Add</button>
+                    <button className="btn" onClick={() => this.addItem(this.state.userInput)}>➕</button>
                 </div>
-
+                </div>
                 <ul>
                     {this.state.todoList.map((item, index) => (
-                            <li key={index}>{item}</li>
+                            <li onClick={this.crossedWord} key={index}>
+                                <img className="check" src={check} width="30px" alt="check"/>
+                                {item}
+                                <img className="trash" onClick={() => this.done()} src={trash} width="30px" alt="trash"/>
+                            </li>
                         ))}
                 </ul>
 
