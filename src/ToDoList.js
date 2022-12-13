@@ -32,8 +32,9 @@ crossedWord(e){
     li.classList.toggle ('crossed');
 }
 
-done(){
-    this.setState()
+deleteTask(e){
+    const apple = e.target;
+    apple.classList ('deleted');
 }
 
 onFormSubmit = (event) =>{
@@ -63,7 +64,7 @@ render(){
                             <li onClick={this.crossedWord} key={index}>
                                 <img className="check" src={check} width="30px" alt="check"/>
                                 {item}
-                                <img className="trash" onClick={() => this.done()} src={trash} width="30px" alt="trash"/>
+                                <img className="trash" onClick={this.deleteTask} key={index} src={trash} width="30px" alt="trash"/>
                             </li>
                         ))}
                 </ul>
