@@ -34,7 +34,7 @@ crossedWord(e){
 
 deleteTask(e){
     let newToDoList = this.state.todoList;
-    newToDoList.splice(e.index, 1);
+    newToDoList.splice(newToDoList.index0f(e.target.innerText), 1);
     this.setState({ todoList : newToDoList });
     // const apple = e.target;
     // apple.classList.add ('deleted');
@@ -67,7 +67,7 @@ render(){
                             <li onClick={this.crossedWord} key={index}>
                                 <img className="check" src={check} width="30px" alt="check"/>
                                 {item}
-                                <img className="trash" onClick={() => this.deleteTask(index)} key={index} src={trash} width="30px" alt="trash"/>
+                                <img className="trash" onClick={(e) => this.deleteTask(e)} key={index} src={trash} width="30px" alt="trash"/>
                             </li>
                         ))}
                 </ul>
